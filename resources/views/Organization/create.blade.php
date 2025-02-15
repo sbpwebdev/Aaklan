@@ -1,4 +1,4 @@
-@include('admin.header')
+@include('header')
 
 <!-- Start project content area -->
 <div class="page">
@@ -170,10 +170,10 @@
             <div class="container-fluid">
                 <div class="d-flex justify-content-between align-items-center ">
                     <div class="header-action">
-                        <h1 class="page-title">Students</h1>
+                        <h1 class="page-title">Organization</h1>
                         <ol class="breadcrumb page-breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Ericsson</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Students</li>
+                            <li class="breadcrumb-item"><a href="#">Aaklan</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Organization</li>
                         </ol>
                     </div>
                     <ul class="nav nav-tabs page-header-tab">
@@ -187,7 +187,7 @@
         <div class="section-body mt-4">
             <div class="container-fluid">
                 <div class="tab-content">
-<div id="Student-add">
+                    <div id="Student-add">
                         <div class="row clearfix">
                             <div class="col-lg-8 col-md-12 col-sm-12">
                                 <div class="card">
@@ -203,51 +203,81 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Name <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" name="organization_name" id="organization_name" placeholder="Enter First name">
+                                                <input type="text" class="form-control" name="organization_name" id="organization_name" placeholder="Enter Organization name">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Email <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" name="organization_email" id="organization_email" placeholder="Enter Last name">
+                                                <input type="text" class="form-control" name="organization_email" id="organization_email" placeholder="Enter organization email">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Contact <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" name="organization_contact" id="organization_contact">
+                                                <input type="text" class="form-control" name="organization_contact" id="organization_contact" placeholder="Enter contact">
                                             </div>
                                         </div>
                                       
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">City <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" placeholder="City" name="organization_city" id="organization_city">
+                                                <input type="text" class="form-control" placeholder="City" name="organization_city" id="organization_city"  placeholder="Enter city">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">State <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" placeholder="State" name="organization_state" id="organization_state">
+                                                <input type="text" class="form-control" placeholder="State" name="organization_state" id="organization_state" placeholder="Enter state">
                                             </div>
                                         </div>
                                    
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Address <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" name="organization_address" id="organization_address">
+                                                <input type="text" class="form-control" name="organization_address" id="organization_address"  placeholder="Enter address">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Organization Code </label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Organization Code" name="organization_code" id="organization_code"  placeholder="Enter Organization code">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                                    <label class="custom-control custom-checkbox"> Other Organization
+                                                        <input type="checkbox" class="custom-control-input" onchange="showInput()" name="is_other_organization" id="is_other_organization">
+                                                        <span class="custom-control-label">&nbsp;</span>
+                                                    </label>
+                                        </div>
+                                        <div class="form-group row" style="display:none">
+                                            <label class="col-md-3 col-form-label">Other Organization Code </label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Other Organization Code" name="Other_organization_code" id="Other_Otherorganization_code"  placeholder="Enter Other Organization code">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Referance Code <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" placeholder="Referance Code" name="referance_code" id="referance_code">
+                                                <input type="text" class="form-control" placeholder="Referance Code" name="referance_code" id="referance_code"  placeholder="Enter referance code">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Number Of Trainers <span class="text-danger">*</span></label>
+                                            <label class="col-md-3 col-form-label">Organization Type <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" placeholder="Number Of Trainers" name="no_of_trainers" id="no_of_trainers">
+                                                <select class="form-control input-height" name="organization_type_id" id="organization_type_id"  placeholder="Enter organization type">
+                                                    <option value="">Select Organization Type</option>
+                                                    <option value="1">School</option>
+                                                    <option value="2">College</option>
+                                                    <option value="3">Institute</option>
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Number Of Trainers </label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Number Of Trainers" name="no_of_trainers" id="no_of_trainers"  placeholder="Enter number of trainerss">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -257,18 +287,7 @@
                                                 <!-- <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> -->
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Organization Type <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <select class="form-control input-height" name="organization_type_id" id="organization_type_id">
-                                                    <option value="">Select Organization Type</option>
-                                                    <option value="1">School</option>
-                                                    <option value="2">College</option>
-                                                    <option value="3">Institute</option>
-                                                   
-                                                </select>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-sm-12">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                                 <!-- <button type="submit" class="btn btn-outline-secondary">Cancel</button> -->
@@ -354,4 +373,14 @@
         <!-- Start main footer -->
        
     </div>    
-    @include('admin.footer')
+    @include('footer')
+    <script>
+        function showInput(){
+           var isChecked = document.getElementById("myCheck").checked;
+            if(isChecked == true){
+                document.getElementById('testdiv').style.disaply = 'block';
+            }else{
+                document.getElementById('testdiv').style.disaply = 'none';
+            }
+        }
+    </script>

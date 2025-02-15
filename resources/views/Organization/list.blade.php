@@ -1,4 +1,4 @@
-@include('admin.header')
+@include('header')
 
 <!-- Start project content area -->
 <div class="page">
@@ -179,7 +179,7 @@
                     <ul class="nav nav-tabs page-header-tab">
                         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Student-all">List View</a></li>
                         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Student-profile">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="/admin/organization/add">Add</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="{{ route('organizations.create')  }}">Add</a></li>
                     </ul>
                 </div>
             </div>
@@ -240,7 +240,15 @@
                                         <td>{{ $organization->referance_code }}</td>
                                         <td>{{ $organization->organization_address }}</td>
                                         <td>{{ $organization->no_of_trainers }}</td>
-                                        
+                                        <td>
+                                           
+                                            <a href="{{ route('organizations.edit', $organization)  }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="{{ route('organizations.destroy', $organization) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -484,4 +492,4 @@
         <!-- Start main footer -->
        
     </div>    
-    @include('admin.footer')
+    @include('footer')

@@ -17,10 +17,13 @@ class CreateOrganizationsTable extends Migration
             $table->text('organization_address');
             $table->string('organization_city', 100);
             $table->string('organization_state', 100);
+            $table->string('organization_code', 30)->default(null);;
+            $table->boolean('is_other_organization')->default(false);
+            $table->string('other_organization_code', 30)->default(null);;
             $table->string('referance_code', 20);
             $table->integer('no_of_trainers');
             $table->string('password', 150);
-            $table->string('organization_images', 25);
+            $table->string('organization_images', 255);
             $table->integer('organization_type_id');
             $table->dateTime('created_on');
             $table->integer('created_by');

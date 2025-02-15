@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="icon" href="favicon.ico" type="image/x-icon') !!}" />
-<title>:: Ericsson :: Home</title>
+<title>Aaklan</title>
 
 <!-- Bootstrap Core and vandor -->
 <link rel="stylesheet" href="{!! asset('plugins/bootstrap/css/bootstrap.min.css') !!}" />
@@ -782,7 +782,7 @@
                         <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
                         <li><a href="professors.html"><i class="fa fa-black-tie"></i><span>Professors</span></a></li>
                         <li><a href="staff.html"><i class="fa fa-user-circle-o"></i><span>Staff</span></a></li>
-                        <li><a href="/admin/organization"><i class="fa fa-users"></i><span>Organization</span></a></li>
+                        <li><a href="/organizations"><i class="fa fa-users"></i><span>Organization</span></a></li>
                         <li><a href="/admin/student"><i class="fa fa-users"></i><span>Students</span></a></li>
                         <li><a href="departments.html"><i class="fa fa-users"></i><span>Departments</span></a></li>
                         <li><a href="/admin/courses"><i class="fa fa-graduation-cap"></i><span>Courses</span></a></li>                        

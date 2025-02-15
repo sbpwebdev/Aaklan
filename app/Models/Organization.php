@@ -1,5 +1,5 @@
 <?php
-// app/Models/Organization.php
+//use App\Models\Organization;
 
 namespace App\Models;
 

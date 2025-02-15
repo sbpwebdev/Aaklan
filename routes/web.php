@@ -20,6 +20,7 @@ use App\Http\Controllers\CoursesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::resource('organizations', OrganizationController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,10 +31,6 @@ Route::post('/send-whatsapp', [WhatsAppController::class, 'sendWhatsAppMessage']
 Route::get('/admin/home', [HomeController::class, 'myAdminHome']);
 
 
-Route::get('/admin/organization', [OrganizationController::class, 'index']);
-Route::get('/admin/organization/add', [OrganizationController::class, 'add']);
-//Route::post('/admin/organization/store', [OrganizationController::class, 'store']);
-Route::post('/admin/organization/store', [OrganizationController::class, 'store']);
 
 Route::get('/admin/student', [StudentController::class, 'list']);
 Route::get('/admin/student/add', [StudentController::class, 'add']);

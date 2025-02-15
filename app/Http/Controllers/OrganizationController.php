@@ -4,8 +4,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\OrganizationService;
+use App\Models\Organization; // <-- Make sure this line is here
 use Illuminate\Http\Request;
+
+use App\Services\OrganizationService;
+
 
 class OrganizationController extends Controller
 {
@@ -27,6 +30,10 @@ class OrganizationController extends Controller
             'organization_contact' => 'string',
             'organization_city' => 'string',
             'organization_state' => 'string',
+            'organization_address' => 'string',
+            'organization_code' => 'string',
+            'is_other_organization' => 'boolean',
+            'other_organization_code' => 'string',
             'address' => 'string',
             'referance_code' => 'string',
             'no_of_trainers' => 'integer',
@@ -38,23 +45,20 @@ class OrganizationController extends Controller
        // dd($data);
        $organization = $this->organizationService->create($data);
       // return response()->json($organization, 201);
-      return redirect('/admin/organization');
+      return redirect('organization');
     }
 
     // Get all organizations
     public function index()
     {
         $organizations = $this->organizationService->getAll();
-        return view('admin/Organization/list',compact('organizations'));
+        return view('Organization.list',compact('organizations'));
 
-       // return response()->json($organizations);
     }
 
-    public function add()
+    public function create()
     {
-        
-        return view('admin/Organization/add');
-
+        return view('Organization.create'); // Return the create form view
     }
 
     // Get a single organization by ID
@@ -63,16 +67,32 @@ class OrganizationController extends Controller
         $organization = $this->organizationService->getById($id);
         return response()->json($organization);
     }
-
+    // Show the form to edit an organization
+    public function edit(Organization $organization)
+    {
+        //dd($organization);
+        return view('Organization.edit',compact('organization'));
+    }
     // Update an organization
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'name' => 'sometimes|required|string|max:255',
-            'email' => 'sometimes|required|email|unique:organizations,email',
-            'address' => 'sometimes|required|string',
+            'organization_name' => 'required|string|max:255',
+            'organization_email' => 'required|email|unique:organization,organization_email',
+            'organization_contact' => 'string',
+            'organization_city' => 'string',
+            'organization_state' => 'string',
+            'organization_address' => 'string',
+            'organization_code' => 'string',
+            'is_other_organization' => 'boolean',
+            'other_organization_code' => 'string',
+            'address' => 'string',
+            'referance_code' => 'string',
+            'no_of_trainers' => 'integer',
+           // 'organization_images' => 'string',
+            'organization_type_id' => 'integer',
         ]);
-
+       // dd($data);
         $organization = $this->organizationService->update($id, $data);
         return response()->json($organization);
     }
