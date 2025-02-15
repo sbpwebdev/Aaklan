@@ -94,13 +94,15 @@ class OrganizationController extends Controller
         ]);
        // dd($data);
         $organization = $this->organizationService->update($id, $data);
-        return response()->json($organization);
+        //return response()->json($organization);
+        return redirect('organization');
     }
 
     // Delete an organization
     public function destroy($id)
     {
         $organization = $this->organizationService->delete($id);
-        return response()->json(['message' => 'Organization deleted successfully']);
+       // return response()->json(['message' => 'Organization deleted successfully']);
+       return redirect('organization');
     }
 }
