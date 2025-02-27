@@ -198,7 +198,7 @@
                                             <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
                                         </div>
                                     </div>
-                                    <form class="card-body" action="/admin/organization/store" method="post">
+                                    <form class="card-body" action="{{ route('organizations.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Name <span class="text-danger">*</span></label>

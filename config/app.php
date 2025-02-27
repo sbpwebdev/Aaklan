@@ -169,6 +169,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\OrganizationServiceProvider::class,
+        App\Providers\StudentServiceProvider::class,
+        App\Providers\StaffServiceProvider::class,
+        App\Providers\GradeServiceProvider::class,
+        App\Providers\OrganizationTypeServiceProvider::class,
+        App\Providers\StudentTypeServiceProvider::class,
+        App\Providers\StaffTypeServiceProvider::class,
+        App\Providers\LevelServiceProvider::class,
     ])->toArray(),
 
     /*

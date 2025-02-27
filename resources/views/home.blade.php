@@ -1,4 +1,4 @@
-@include('admin.header')
+@include('header')
 
 <div class="page">
         <!-- Start Page header -->
@@ -891,4 +891,4 @@
         </div>
        
     </div>    
-    @include('admin.footer')
+    @include('footer')

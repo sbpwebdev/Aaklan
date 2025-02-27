@@ -1,4 +1,4 @@
-@include('admin.header')
+@include('header')
 
 <!-- Start project content area -->
 <div class="page">
@@ -46,11 +46,11 @@
                             <div class="dropdown d-flex">
                                 <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-1" data-toggle="dropdown"><i class="fa fa-language"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="../assets/images/flags/us.svg" alt="">English</a>
+                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="/images/flags/us.svg" alt="">English</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="../assets/images/flags/es.svg" alt="">Spanish</a>
-                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="../assets/images/flags/jp.svg" alt="">japanese</a>
-                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="../assets/images/flags/bl.svg" alt="">France</a>
+                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="/images/flags/es.svg" alt="">Spanish</a>
+                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="/images/flags/jp.svg" alt="">japanese</a>
+                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="/images/flags/bl.svg" alt="">France</a>
                                 </div>
                             </div>
                             <div class="dropdown d-flex">
@@ -59,7 +59,7 @@
                                     <ul class="right_chat list-unstyled w350 p-0">
                                         <li class="online">
                                             <a href="javascript:void(0);" class="media">
-                                                <img class="media-object" src="../assets/images/xs/avatar4.jpg" alt="">
+                                                <img class="media-object" src="/images/xs/avatar4.jpg" alt="">
                                                 <div class="media-body">
                                                     <span class="name">Donald Gardner</span>
                                                     <div class="message">It is a long established fact that a reader</div>
@@ -70,7 +70,7 @@
                                         </li>
                                         <li class="online">
                                             <a href="javascript:void(0);" class="media">
-                                                <img class="media-object " src="../assets/images/xs/avatar5.jpg" alt="">
+                                                <img class="media-object " src="/images/xs/avatar5.jpg" alt="">
                                                 <div class="media-body">
                                                     <span class="name">Wendy Keen</span>
                                                     <div class="message">There are many variations of passages of Lorem Ipsum</div>
@@ -81,7 +81,7 @@
                                         </li>
                                         <li class="offline">
                                             <a href="javascript:void(0);" class="media">
-                                                <img class="media-object " src="../assets/images/xs/avatar2.jpg" alt="">
+                                                <img class="media-object " src="/images/xs/avatar2.jpg" alt="">
                                                 <div class="media-body">
                                                     <span class="name">Matt Rosales</span>
                                                     <div class="message">Contrary to popular belief, Lorem Ipsum is not simply</div>
@@ -92,7 +92,7 @@
                                         </li>
                                         <li class="online">
                                             <a href="javascript:void(0);" class="media">
-                                                <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="">
+                                                <img class="media-object " src="/images/xs/avatar3.jpg" alt="">
                                                 <div class="media-body">
                                                     <span class="name">Phillip Smith</span>
                                                     <div class="message">It has roots in a piece of classical Latin literature from 45 BC</div>
@@ -149,7 +149,7 @@
                             </div>
                             <div class="dropdown d-flex">
                                 <a href="javascript:void(0)" class="chip ml-3" data-toggle="dropdown">
-                                    <span class="avatar" style="background-image: url(../assets/images/xs/avatar5.jpg)"></span> George</a>
+                                    <span class="avatar" style="background-image: url(/images/xs/avatar5.jpg)"></span> George</a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                     <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fe fe-user"></i> Profile</a>
                                     <a class="dropdown-item" href="app-setting.html"><i class="dropdown-icon fe fe-settings"></i> Settings</a>
@@ -198,95 +198,84 @@
                                             <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
                                         </div>
                                     </div>
-                                    <form class="card-body">
+                                    <form class="card-body"  action="{{ route('students.store') }}" method="post"  enctype="multipart/form-data">
+                                    @csrf
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">First Name <span class="text-danger">*</span></label>
+                                            <label class="col-md-3 col-form-label">Student Name <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" placeholder="Enter First name">
+                                                <input type="text" class="form-control" placeholder="Enter First name"  name="student_name" id="student_name">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Last Name <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control" placeholder="Enter Last name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Roll No <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
+                                       
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Email</label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Registration Date <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <input data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Class <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <select class="form-control input-height" name="department">
-                                                    <option value="">Select...</option>
-                                                    <option value="Category 1">Computer</option>
-                                                    <option value="Category 2">Mechanical</option>
-                                                    <option value="Category 3">Mathematics</option>
-                                                    <option value="Category 3">Commerce</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Gender <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <select class="form-control input-height" name="gender">
-                                                    <option value="">Select...</option>
-                                                    <option value="Category 1">Male</option>
-                                                    <option value="Category 2">Female</option>
-                                                </select>
+                                                <input type="text" class="form-control" placeholder="Enter Email"  name="student_email" id="student_email">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Mobile No. <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" placeholder="Enter Mobile No"  name="student_contact" id="student_contact">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Parents Name <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Parents Mobile No. <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Date Of Birth  <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
+                                        
+                                        
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Address <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" placeholder="Enter Address"  name="student_address" id="student_address">
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Organization Code <span class="text-danger">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Enter Organization Code"  name="organization_code" id="organization_code">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Grade <span class="text-danger">*</span></label>
+                                            <div class="col-md-9">
+                                                <select class="form-control input-height" placeholder="Enter Student Grade"  name="student_grade_id" id="student_grade_id">
+                                                    <option value="">Select Grade</option>
+                                                    <option value="1">Grade 1</option>
+                                                    <option value="2">Grade 2</option>
+                                                    <option value="3">Grade 3</option>
+                                                    <option value="4">Grade 4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Course <span class="text-danger">*</span></label>
+                                            <div class="col-md-9">
+                                                <select class="form-control input-height" name="student_course_id" id="student_course_id">
+                                                    <option value="">Select Course</option>
+                                                    <option value="1">Coding</option>
+                                                    <option value="2">English Speaking</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Type <span class="text-danger">*</span></label>
+                                            <div class="col-md-9">
+                                                <select class="form-control input-height"  name="student_type_id" id="student_type_id">
+                                                    <option value="">Select Type</option>
+                                                    <option value="1">Online</option>
+                                                    <option value="2">Offline</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Profile Picture</label>
                                             <div class="col-md-9">
-                                                <input type="file" class="dropify">
-                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                                <input type="file" class="dropify" name="student_images" id="student_images">
+                                    
                                             </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <!-- <button type="submit" class="btn btn-outline-secondary">Cancel</button> -->
                                         </div>
                                     </form>
                                 </div>
@@ -369,4 +358,4 @@
         <!-- Start main footer -->
        
     </div>    
-    @include('admin.footer')
+    @include('footer')

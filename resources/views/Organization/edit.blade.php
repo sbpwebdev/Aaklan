@@ -198,7 +198,7 @@
                                             <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
                                         </div>
                                     </div>
-                                    <form class="card-body" action="{{ route('organizations.update', $organization ) }}" method="POST">
+                                    <form class="card-body" action="{{ route('organizations.update', $organization, $organization->organization_id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                         <div class="form-group row">

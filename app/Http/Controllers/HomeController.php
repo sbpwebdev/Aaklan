@@ -9,6 +9,6 @@ class HomeController extends Controller
     // 
     public function myAdminHome()
     {
-        return view('admin/home');
+        return view('home');
     }
 }

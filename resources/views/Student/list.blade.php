@@ -1,4 +1,4 @@
-@include('admin.header')
+@include('header')
 
 <!-- Start project content area -->
 <div class="page">
@@ -46,11 +46,11 @@
                             <div class="dropdown d-flex">
                                 <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-1" data-toggle="dropdown"><i class="fa fa-language"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="../assets/images/flags/us.svg" alt="">English</a>
+                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="/images/flags/us.svg" alt="">English</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="../assets/images/flags/es.svg" alt="">Spanish</a>
-                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="../assets/images/flags/jp.svg" alt="">japanese</a>
-                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="../assets/images/flags/bl.svg" alt="">France</a>
+                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="/images/flags/es.svg" alt="">Spanish</a>
+                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="/images/flags/jp.svg" alt="">japanese</a>
+                                    <a class="dropdown-item" href="#"><img class="w20 mr-2" src="/images/flags/bl.svg" alt="">France</a>
                                 </div>
                             </div>
                             <div class="dropdown d-flex">
@@ -59,7 +59,7 @@
                                     <ul class="right_chat list-unstyled w350 p-0">
                                         <li class="online">
                                             <a href="javascript:void(0);" class="media">
-                                                <img class="media-object" src="../assets/images/xs/avatar4.jpg" alt="">
+                                                <img class="media-object" src="/images/xs/avatar4.jpg" alt="">
                                                 <div class="media-body">
                                                     <span class="name">Donald Gardner</span>
                                                     <div class="message">It is a long established fact that a reader</div>
@@ -70,7 +70,7 @@
                                         </li>
                                         <li class="online">
                                             <a href="javascript:void(0);" class="media">
-                                                <img class="media-object " src="../assets/images/xs/avatar5.jpg" alt="">
+                                                <img class="media-object " src="/images/xs/avatar5.jpg" alt="">
                                                 <div class="media-body">
                                                     <span class="name">Wendy Keen</span>
                                                     <div class="message">There are many variations of passages of Lorem Ipsum</div>
@@ -81,7 +81,7 @@
                                         </li>
                                         <li class="offline">
                                             <a href="javascript:void(0);" class="media">
-                                                <img class="media-object " src="../assets/images/xs/avatar2.jpg" alt="">
+                                                <img class="media-object " src="/images/xs/avatar2.jpg" alt="">
                                                 <div class="media-body">
                                                     <span class="name">Matt Rosales</span>
                                                     <div class="message">Contrary to popular belief, Lorem Ipsum is not simply</div>
@@ -92,7 +92,7 @@
                                         </li>
                                         <li class="online">
                                             <a href="javascript:void(0);" class="media">
-                                                <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="">
+                                                <img class="media-object " src="/images/xs/avatar3.jpg" alt="">
                                                 <div class="media-body">
                                                     <span class="name">Phillip Smith</span>
                                                     <div class="message">It has roots in a piece of classical Latin literature from 45 BC</div>
@@ -149,7 +149,7 @@
                             </div>
                             <div class="dropdown d-flex">
                                 <a href="javascript:void(0)" class="chip ml-3" data-toggle="dropdown">
-                                    <span class="avatar" style="background-image: url(../assets/images/xs/avatar5.jpg)"></span> George</a>
+                                    <span class="avatar" style="background-image: url(/images/xs/avatar5.jpg)"></span> George</a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                     <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fe fe-user"></i> Profile</a>
                                     <a class="dropdown-item" href="app-setting.html"><i class="dropdown-icon fe fe-settings"></i> Settings</a>
@@ -177,9 +177,9 @@
                         </ol>
                     </div>
                     <ul class="nav nav-tabs page-header-tab">
-                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Student-all">List View</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Student-profile">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="/admin/student/add">Add</a></li>
+                        <li class="nav-item"><a class="nav-link active"  href="{{ route('students.index')  }}">List View</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Student-profile">Profile</a></li> -->
+                        <li class="nav-item"><a class="nav-link" href="{{ route('students.create')  }}">Add</a></li>
                     </ul>
                 </div>
             </div>
@@ -221,145 +221,45 @@
                             <table class="table table-hover table-vcenter table-striped mb-0 text-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>Roll No.</th>
+                                        <th>Image/LOGO</th>
                                         <th>Name</th>
-                                        <th></th>
-                                        <th>Department</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Admission Date</th>
-                                        <th>Action</th>
+                                        <th>Contact</th>
+                                        <th>Student Code</th>
+                                        <th>Address</th>
+                                                                               
                                     </tr>
                                 </thead>
                                 <tbody>
+                                 
+                                @foreach ($students as $student)
                                     <tr>
-                                        <td>A25</td>
-                                        <td class="w60">
-                                            <img class="avatar" src="../assets/images/xs/avatar1.jpg" alt="">
-                                        </td>
-                                        <td><span class="font-16">Ken Smith</span></td>
-                                        <td>Science</td>
-                                        <td>ken@gmail.com</td>
-                                        <td>(417) 646-7483</td>
-                                        <td>04 Aug, 2024</td>
                                         <td>
-                                            <button type="button" class="btn btn-icon btn-sm" title="View"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>
+                                        <img class="avatar" src="{{ Storage::url('students/' . $student->student_images) }}" alt="Organization Image" width="100">
+                                        </td>
+                                        <td>{{ $student->student_name }} </td>
+                                        <td>{{ $student->student_email }}</td>
+                                        <td>{{ $student->student_contact }}</td>
+                                        <td>{{ $student->organization_code }}</td>
+                                        <td>{{ $student->student_address }}</td>
+                                        
+                                        <td>
+                                           
+                                            <a href="{{ route('students.edit', $student->student_id)  }}">
+                                            <button type="button" class="btn btn-icon btn-sm" title="Edit">
+                                            
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                            </a>
+                                            <form action="{{ route('students.destroy', $student->student_id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-icon btn-sm js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>
+                                              
+                                            </form>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>A26</td>
-                                        <td class="w60">
-                                            <img class="avatar" src="../assets/images/xs/avatar2.jpg" alt="">
-                                        </td>
-                                        <td><span class="font-16">Gerald K Smith</span></td>
-                                        <td>M.C.A.</td>
-                                        <td>Gerald@gmail.com</td>
-                                        <td>(154) 646-2486</td>
-                                        <td>04 Aug, 2024</td>
-                                        <td>
-                                            <button type="button" class="btn btn-icon btn-sm" title="View"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>A25</td>
-                                        <td class="w60">
-                                            <img class="avatar" src="../assets/images/xs/avatar3.jpg" alt="">
-                                        </td>
-                                        <td><span class="font-16">Ken Smith</span></td>
-                                        <td>Mechanical</td>
-                                        <td>ken@gmail.com</td>
-                                        <td>(417) 646-8377</td>
-                                        <td>04 Aug, 2024</td>
-                                        <td>
-                                            <button type="button" class="btn btn-icon btn-sm" title="View"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>A27</td>
-                                        <td class="w60">
-                                            <img class="avatar" src="../assets/images/xs/avatar4.jpg" alt="">
-                                        </td>
-                                        <td><span class="font-16">Alice A Smith</span></td>
-                                        <td>M.B.B.S.</td>
-                                        <td>Patricia@gmail.com</td>
-                                        <td>(753) 646-4931</td>
-                                        <td>04 Aug, 2024</td>
-                                        <td>
-                                            <button type="button" class="btn btn-icon btn-sm" title="View"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>A17</td>
-                                        <td class="w60">
-                                            <img class="avatar" src="../assets/images/xs/avatar5.jpg" alt="">
-                                        </td>
-                                        <td><span class="font-16">Ken Smith</span></td>
-                                        <td>Arts</td>
-                                        <td>ken@gmail.com</td>
-                                        <td>(417) 646-7642</td>
-                                        <td>04 Aug, 2024</td>
-                                        <td>
-                                            <button type="button" class="btn btn-icon btn-sm" title="View"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>A11</td>
-                                        <td class="w60">
-                                            <img class="avatar" src="../assets/images/xs/avatar6.jpg" alt="">
-                                        </td>
-                                        <td><span class="font-16">Corrine M Johnson</span></td>
-                                        <td>Mechanical</td>
-                                        <td>Gladys@gmail.com</td>
-                                        <td>(349) 646-8377</td>
-                                        <td>04 Aug, 2024</td>
-                                        <td>
-                                            <button type="button" class="btn btn-icon btn-sm" title="View"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>A12</td>
-                                        <td class="w60">
-                                            <img class="avatar" src="../assets/images/xs/avatar7.jpg" alt="">
-                                        </td>
-                                        <td><span class="font-16">Alan Johnson</span></td>
-                                        <td>Music</td>
-                                        <td>ken@gmail.com</td>
-                                        <td>(648) 646-8523</td>
-                                        <td>04 Aug, 2024</td>
-                                        <td>
-                                            <button type="button" class="btn btn-icon btn-sm" title="View"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>A23</td>
-                                        <td class="w60">
-                                            <img class="avatar" src="../assets/images/xs/avatar8.jpg" alt="">
-                                        </td>
-                                        <td><span class="font-16">John Smith</span></td>
-                                        <td>Civil</td>
-                                        <td>Corrine@gmail.com</td>
-                                        <td>(417) 646-7845</td>
-                                        <td>04 Aug, 2024</td>
-                                        <td>
-                                            <button type="button" class="btn btn-icon btn-sm" title="View"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm" title="Edit"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-icon btn-sm js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>
-                                        </td>
-                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -370,7 +270,7 @@
                                 <div class="card">
                                     <div class="card-body w_user">
                                         <div class="user_avtar">
-                                            <img class="rounded-circle" src="../assets/images/sm/avatar2.jpg" alt="">
+                                            <img class="rounded-circle" src="/images/sm/avatar2.jpg" alt="">
                                         </div>
                                         <div class="wid-u-info">
                                             <h5>Dessie Parks</h5>
@@ -497,7 +397,7 @@
                                             <p>Please try <b>paste some texts</b> here</p>
                                         </div>
                                         <div class="timeline_item ">
-                                            <img class="tl_avatar" src="../assets/images/xs/avatar1.jpg" alt="" />
+                                            <img class="tl_avatar" src="/images/xs/avatar1.jpg" alt="" />
                                             <span><a href="javascript:void(0);">Elisse Joson</a> San Francisco, CA <small class="float-right text-right">20-April-2024 - Today</small></span>
                                             <h6 class="font600">Hello, 'Im a single div responsive timeline without media Queries!</h6>
                                             <div class="msg">
@@ -514,7 +414,7 @@
                                                     <ul class="recent_comments list-unstyled mt-4 mb-0">
                                                         <li>
                                                             <div class="avatar_img">
-                                                                <img class="rounded img-fluid" src="../assets/images/xs/avatar4.jpg" alt="">
+                                                                <img class="rounded img-fluid" src="/images/xs/avatar4.jpg" alt="">
                                                             </div>
                                                             <div class="comment_body">
                                                                 <h6>Donald Gardner <small class="float-right font-14">Just now</small></h6>
@@ -526,14 +426,14 @@
                                             </div>                                
                                         </div>
                                         <div class="timeline_item ">
-                                            <img class="tl_avatar" src="../assets/images/xs/avatar4.jpg" alt="" />
+                                            <img class="tl_avatar" src="/images/xs/avatar4.jpg" alt="" />
                                             <span><a href="javascript:void(0);" title="">Dessie Parks</a> Oakland, CA <small class="float-right text-right">19-April-2024 - Yesterday</small></span>
                                             <h6 class="font600">Oeehhh, that's awesome.. Me too!</h6>
                                             <div class="msg">
                                                 <p>I'm speaking with myself, number one, because I have a very good brain and I've said a lot of things. on the web by far... While that's mock-ups and this is politics, are they really so different? I think the only card she has is the Lorem card.</p>
                                                 <div class="timeline_img mb-20">
-                                                    <img class="width100" src="../assets/images/gallery/1.jpg" alt="Awesome Image">
-                                                    <img class="width100" src="../assets/images/gallery/2.jpg" alt="Awesome Image">
+                                                    <img class="width100" src="/images/gallery/1.jpg" alt="Awesome Image">
+                                                    <img class="width100" src="/images/gallery/2.jpg" alt="Awesome Image">
                                                 </div>
                                                 <a href="javascript:void(0);" class="mr-20 text-muted"><i class="fa fa-heart text-pink"></i> 23 Love</a>
                                                 <a class="text-muted" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1"><i class="fa fa-comments"></i> 2 Comment</a>
@@ -547,20 +447,20 @@
                                                     <ul class="recent_comments list-unstyled mt-4 mb-0">
                                                         <li>
                                                             <div class="avatar_img">
-                                                                <img class="rounded img-fluid" src="../assets/images/xs/avatar4.jpg" alt="">
+                                                                <img class="rounded img-fluid" src="/images/xs/avatar4.jpg" alt="">
                                                             </div>
                                                             <div class="comment_body">
                                                                 <h6>Donald Gardner <small class="float-right font-14">Just now</small></h6>
                                                                 <p>Lorem ipsum Veniam aliquip culpa laboris minim tempor</p>
                                                                 <div class="timeline_img mb-20">
-                                                                    <img class="width150" src="../assets/images/gallery/7.jpg" alt="Awesome Image">
-                                                                    <img class="width150" src="../assets/images/gallery/8.jpg" alt="Awesome Image">
+                                                                    <img class="width150" src="/images/gallery/7.jpg" alt="Awesome Image">
+                                                                    <img class="width150" src="/images/gallery/8.jpg" alt="Awesome Image">
                                                                 </div>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="avatar_img">
-                                                                <img class="rounded img-fluid" src="../assets/images/xs/avatar3.jpg" alt="">
+                                                                <img class="rounded img-fluid" src="/images/xs/avatar3.jpg" alt="">
                                                             </div>
                                                             <div class="comment_body">
                                                                 <h6>Dessie Parks <small class="float-right font-14">1min ago</small></h6>
@@ -572,7 +472,7 @@
                                             </div>
                                         </div>
                                         <div class="timeline_item ">
-                                            <img class="tl_avatar" src="../assets/images/xs/avatar7.jpg" alt="" />
+                                            <img class="tl_avatar" src="/images/xs/avatar7.jpg" alt="" />
                                             <span><a href="javascript:void(0);" title="" >Rochelle Barton</a> San Francisco, CA <small class="float-right text-right">12-April-2024</small></span>
                                             <h6 class="font600">An Engineer Explains Why You Should Always Order the Larger Pizza</h6>
                                             <div class="msg">
@@ -601,4 +501,42 @@
         <!-- Start main footer -->
        
     </div>    
-    @include('admin.footer')
+  
+
+    <!-- Add New Event popup -->
+<div class="modal fade" id="addNewEvent" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>Add</strong> an event</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">Event Name</label>
+                            <input class="form-control" placeholder="Enter name" type="text" name="category-name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Choose Event Color</label>
+                            <select class="form-control" data-placeholder="Choose a color..." name="category-color">
+                                <option value="success">Success</option>
+                                <option value="danger">Danger</option>
+                                <option value="info">Info</option>
+                                <option value="primary">Primary</option>
+                                <option value="warning">Warning</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success save-event" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@include('footer')

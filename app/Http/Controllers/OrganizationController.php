@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 use App\Services\OrganizationService;
 
-
 class OrganizationController extends Controller
 {
     protected $organizationService;
@@ -22,6 +21,7 @@ class OrganizationController extends Controller
     // Create a new organization
     public function store(Request $request)
     {
+        
 
         //dd($request);
         $data = $request->validate([
@@ -37,15 +37,49 @@ class OrganizationController extends Controller
             'address' => 'string',
             'referance_code' => 'string',
             'no_of_trainers' => 'integer',
-           // 'organization_images' => 'string',
+           // 'organization_images' => $fileName,
             'organization_type_id' => 'integer',
             
             
         ]);
-       // dd($data);
-       $organization = $this->organizationService->create($data);
+
+        $path = "";
+        $fileName = "";
+        if ($request->hasFile('organization_images')) {
+            // Get the file
+            $file = $request->file('organization_images');
+
+            // Generate a unique file name (optional)
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+
+            // Store the image in the 'public/images' folder
+            $path = $file->storeAs('public/organizations', $fileName);
+
+            // Return a success message with the path
+           // return back()->with('success', 'Image uploaded successfully!')->with('path', 'images/' . $fileName);
+        }
+        $student = Organization::create([
+            'organization_name' => $request->organization_name,
+            'organization_email' => $request->organization_email,
+            'organization_contact' => $request->organization_contact,
+            'organization_city' => $request->organization_city,
+            'organization_state' => $request->organization_state,
+            'organization_address' => $request->organization_address,
+            'organization_code' => $request->organization_code,
+            'is_other_organization' => $request->is_other_organization,
+            'other_organization_code' => $request->other_organization_code,
+            'address' => $request->address,
+            'referance_code' => $request->referance_code,
+            'no_of_trainers' => $request->no_of_trainers,
+            'organization_images' => $fileName,
+            'organization_type_id' => $request->organization_type_id,
+        ]);
+
+
+      // dd($data);
+       //$organization = $this->organizationService->create($data);
       // return response()->json($organization, 201);
-      return redirect('organization');
+      return redirect()->route('organizations.index')->with('success', 'Organization submitted successfully.');
     }
 
     // Get all organizations
@@ -68,17 +102,21 @@ class OrganizationController extends Controller
         return response()->json($organization);
     }
     // Show the form to edit an organization
-    public function edit(Organization $organization)
+    public function edit(int $organizationId)
     {
-        //dd($organization);
+        //dd($organizationId);
+         // Update an organization
+        $organization = $this->organizationService->getById($organizationId);
         return view('Organization.edit',compact('organization'));
     }
-    // Update an organization
+   
+        
     public function update(Request $request, $id)
     {
+       // dd($id);
         $data = $request->validate([
             'organization_name' => 'required|string|max:255',
-            'organization_email' => 'required|email|unique:organization,organization_email',
+            'organization_email' => 'required|email',
             'organization_contact' => 'string',
             'organization_city' => 'string',
             'organization_state' => 'string',
@@ -89,13 +127,16 @@ class OrganizationController extends Controller
             'address' => 'string',
             'referance_code' => 'string',
             'no_of_trainers' => 'integer',
-           // 'organization_images' => 'string',
+           // 'organization_images' => 'string|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'organization_type_id' => 'integer',
         ]);
-       // dd($data);
+        //dd($data);
+
+       
+
         $organization = $this->organizationService->update($id, $data);
         //return response()->json($organization);
-        return redirect('organization');
+        return redirect('organizations');
     }
 
     // Delete an organization
@@ -103,6 +144,6 @@ class OrganizationController extends Controller
     {
         $organization = $this->organizationService->delete($id);
        // return response()->json(['message' => 'Organization deleted successfully']);
-       return redirect('organization');
+       return redirect('organizations');
     }
 }

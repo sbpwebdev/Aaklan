@@ -18,13 +18,16 @@ class OrganizationService
 
     public function getById($id)
     {
+        //dd($id);
         return Organization::findOrFail($id);
     }
 
     public function update($id, array $data)
     {
+       // dd($data);
         $organization = Organization::findOrFail($id);
         $organization->update($data);
+        //dd($organization);
         return $organization;
     }
 
