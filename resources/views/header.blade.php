@@ -269,11 +269,11 @@
             <div class="tab-pane fade show active" id="menu-uni" role="tabpanel">
                 <nav class="sidebar-nav">
                     <ul class="metismenu">
-                        <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                        <li class="active"><a href="/home/admin"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
                       
-                        <li><a href="/organizations"><i class="fa fa-users"></i><span>Organization</span></a></li>
+                        <li><a href="/organizations"><i class="fa fa-map"></i><span>Organization</span></a></li>
                         <li><a href="/students"><i class="fa fa-users"></i><span>Students</span></a></li>
-                        <li><a href="/staffs"><i class="fa fa-users"></i><span>Staff</span></a></li>
+                        <li><a href="/staffs"><i class="fa fa-user-circle-o"></i><span>Staff</span></a></li>
                        
                     </ul>
                 </nav>
@@ -282,11 +282,11 @@
                 <nav class="sidebar-nav">
                     <ul class="metismenu">
                        
-                        <li><a href="/grades"><i class="fa fa-gear"></i><span>Grade</span></a></li>
-                        <li><a href="/OrganizationTypes"><i class="fa fa-gear"></i><span>Organization Type</span></a></li>
-                        <li><a href="/StudentTypes"><i class="fa fa-gear"></i><span>Student Type</span></a></li>
-                        <li><a href="/StaffTypes"><i class="fa fa-gear"></i><span>Staff Type</span></a></li>
-                        <li><a href="/levels"><i class="fa fa-gear"></i><span>Level</span></a></li>
+                        <li><a href="/grades"><i class="fa fa-black-tie"></i><span>Grade</span></a></li>
+                        <li><a href="/OrganizationTypes"><i class="fa fa-map"></i><span>OrganizationType</span></a></li>
+                        <li><a href="/StudentTypes"><i class="fa fa-users"></i><span>StudentType</span></a></li>
+                        <li><a href="/StaffTypes"><i class="fa fa-user-circle-o"></i><span>StaffType</span></a></li>
+                        <li><a href="/levels"><i class="fa fa-list-ul"></i><span>Level</span></a></li>
                     </ul>
                 </nav>
             </div>
