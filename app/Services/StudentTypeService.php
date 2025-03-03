@@ -34,7 +34,7 @@ class GradeService
         try {
             $Grade = Grade::findOrFail($id);
             $Grade->delete();  // Soft delete or use forceDelete() for permanent delete
-            return redirect()->route('Grade.index')->with('success', 'Grade deleted successfully.');
+            return redirect()->route('grades.index')->with('success', 'Grade deleted successfully.');
         } catch (\Exception $e) {
             dd($e->getMessage());
             // Log the exception or return the error message

@@ -34,7 +34,7 @@ class LevelService
         try {
             $Level = Level::findOrFail($id);
             $Level->delete();  // Soft delete or use forceDelete() for permanent delete
-            return redirect()->route('Level.index')->with('success', 'Level deleted successfully.');
+            return redirect()->route('levels.index')->with('success', 'Level deleted successfully.');
         } catch (\Exception $e) {
             dd($e->getMessage());
             // Log the exception or return the error message

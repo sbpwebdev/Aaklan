@@ -34,7 +34,7 @@ class StaffService
         try {
             $Staff = Staff::findOrFail($id);
             $Staff->delete();  // Soft delete or use forceDelete() for permanent delete
-            return redirect()->route('Staff.index')->with('success', 'Staff deleted successfully.');
+            return redirect()->route('staffs.index')->with('success', 'Staff deleted successfully.');
         } catch (\Exception $e) {
             dd($e->getMessage());
             // Log the exception or return the error message

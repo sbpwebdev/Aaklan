@@ -13,6 +13,7 @@
 <!-- Plugins css -->
 <link rel="stylesheet" href="{!! asset('plugins/summernote/dist/summernote.css') !!}" />
 <link rel="stylesheet" href="{!! asset('plugins/fullcalendar/fullcalendar.min.css') !!}" />
+<link rel="stylesheet" href="{!! asset('plugins/sweetalert/sweetalert.css') !!}" />
 
 <!-- Core css -->
 <link rel="stylesheet" href="{!! asset('css/style.min.css') !!}" />
@@ -56,7 +57,7 @@
         <a href="javascript:void(0)" class="p-3 settingbar float-right"><i class="fa fa-close"></i></a>
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Settings" aria-expanded="true">Settings</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#activity" aria-expanded="false">Activity</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#activity" aria-expanded="false">General Settings</a></li>
         </ul>
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane vivify fadeIn active" id="Settings" aria-expanded="true">
@@ -178,7 +179,7 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane vivify fadeIn" id="activity" aria-expanded="false">
-                <ul class="new_timeline mt-3">
+                <!-- <ul class="new_timeline mt-3">
                     <li>
                         <div class="bullet pink"></div>
                         <div class="time">11:00am</div>
@@ -232,7 +233,17 @@
                             <h4>Go to Home</h4>
                         </div>
                     </li>
-                </ul>
+                </ul> -->
+                <nav class="sidebar-nav">
+                    <ul class="metismenu">
+                       
+                        <li class="{{ Request::is('/grades') ? 'active' : '' }}"><a href="/grades"><i class="fa fa-black-tie"></i><span>Grade</span></a></li>
+                        <li class="{{ Request::is('/OrganizationTypes') ? 'active' : '' }}"><a href="/OrganizationTypes"><i class="fa fa-map"></i><span>OrganizationType</span></a></li>
+                        <li class="{{ Request::is('/StudentTypes') ? 'active' : '' }}"><a href="/StudentTypes"><i class="fa fa-users"></i><span>StudentType</span></a></li>
+                        <li class="{{ Request::is('/StaffTypes') ? 'active' : '' }}"><a href="/StaffTypes"><i class="fa fa-user-circle-o"></i><span>StaffType</span></a></li>
+                        <li class="{{ Request::is('/levels') ? 'active' : '' }}"><a href="/levels"><i class="fa fa-list-ul"></i><span>Level</span></a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
@@ -262,24 +273,45 @@
     <div id="left-sidebar" class="sidebar">
         <h5 class="brand-name">Aaklan<a href="javascript:void(0)" class="menu_option float-right"><i class="icon-grid font-16" data-toggle="tooltip" data-placement="left" title="Grid & List Toggle"></i></a></h5>
         <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#menu-uni">Other</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu-admin">Admin</a></li>
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#menu-uni">Admin</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu-admin">LMS</a></li>
         </ul>
         <div class="tab-content mt-3">
             <div class="tab-pane fade show active" id="menu-uni" role="tabpanel">
                 <nav class="sidebar-nav">
                     <ul class="metismenu">
-                        <li class="active"><a href="/home/admin"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-                      
-                        <li><a href="/organizations"><i class="fa fa-map"></i><span>Organization</span></a></li>
-                        <li><a href="/students"><i class="fa fa-users"></i><span>Students</span></a></li>
-                        <li><a href="/staffs"><i class="fa fa-user-circle-o"></i><span>Staff</span></a></li>
-                       
+                        <li class="{{ Request::is('admin/home') ? 'active' : '' }}">
+                            <a href="/admin/home">
+                                <i class="fa fa-dashboard"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                    
+                        <li class="{{ Request::is('organizations*') ? 'active' : '' }}">
+                            <a href="/organizations">
+                                <i class="fa fa-map"></i>
+                                <span>Organization</span>
+                            </a>
+                        </li>
+                        
+                        <li class="{{ Request::is('students*') ? 'active' : '' }}">
+                            <a href="/students">
+                                <i class="fa fa-users"></i>
+                                <span>Students</span>
+                            </a>
+                        </li>
+                        
+                        <li class="{{ Request::is('staffs*') ? 'active' : '' }}">
+                            <a href="/staffs">
+                                <i class="fa fa-user-circle-o"></i>
+                                <span>Staff</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
             <div class="tab-pane fade" id="menu-admin" role="tabpanel">
-                <nav class="sidebar-nav">
+                <!-- <nav class="sidebar-nav">
                     <ul class="metismenu">
                        
                         <li><a href="/grades"><i class="fa fa-black-tie"></i><span>Grade</span></a></li>
@@ -288,7 +320,89 @@
                         <li><a href="/StaffTypes"><i class="fa fa-user-circle-o"></i><span>StaffType</span></a></li>
                         <li><a href="/levels"><i class="fa fa-list-ul"></i><span>Level</span></a></li>
                     </ul>
-                </nav>
+                </nav> -->
             </div>
         </div>
     </div>
+
+    <!-- Start project content area -->
+<div class="page">
+
+
+
+<!-- Start Page header -->
+<div class="section-body" id="page_top" >
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="left">                        
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="What you want to find">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+               
+                <div class="notification d-flex">
+                  
+                   
+                    <div class="dropdown d-flex">
+                        <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-1" data-toggle="dropdown"><i class="fa fa-bell"></i><span class="badge badge-primary nav-unread"></span></a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <ul class="list-unstyled feeds_widget">
+                                <li>
+                                    <div class="feeds-left">
+                                        <span class="avatar avatar-blue"><i class="fa fa-check"></i></span>
+                                    </div>
+                                    <div class="feeds-body ml-3">
+                                        <p class="text-muted mb-0">Campaign <strong class="text-blue font-weight-bold">Holiday</strong> is nearly reach budget limit.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="feeds-left">
+                                        <span class="avatar avatar-green"><i class="fa fa-user"></i></span>
+                                    </div>
+                                    <div class="feeds-body ml-3">
+                                        <p class="text-muted mb-0">New admission <strong class="text-green font-weight-bold">32</strong> in computer department.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="feeds-left">
+                                        <span class="avatar avatar-red"><i class="fa fa-info"></i></span>
+                                    </div>
+                                    <div class="feeds-body ml-3">
+                                        <p class="text-muted mb-0">6th sem result <strong class="text-red font-weight-bold">67%</strong> in computer department.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="feeds-left">
+                                        <span class="avatar avatar-azure"><i class="fa fa-thumbs-o-up"></i></span>
+                                    </div>
+                                    <div class="feeds-body ml-3">
+                                        <p class="text-muted mb-0">New Feedback <strong class="text-azure font-weight-bold">53</strong> for university assessment.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="dropdown-divider"></div>
+                            <a href="javascript:void(0)" class="dropdown-item text-center text-muted-dark readall">Mark all as read</a>
+                        </div>
+                    </div>
+                    <div class="dropdown d-flex">
+                        <a href="javascript:void(0)" class="chip ml-3" data-toggle="dropdown">
+                            <span class="avatar" style="background-image: url(/images/xs/avatar5.jpg)"></span> George</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fe fe-user"></i> Profile</a>
+                            <a class="dropdown-item" href="app-setting.html"><i class="dropdown-icon fe fe-settings"></i> Settings</a>
+                            <!-- <a class="dropdown-item" href="app-email.html"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="dropdown-icon fe fe-mail"></i> Inbox</a> -->
+                            <!-- <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-send"></i> Message</a> -->
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-help-circle"></i> Need help?</a>
+                            <a class="dropdown-item" href="login.html"><i class="dropdown-icon fe fe-log-out"></i> Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

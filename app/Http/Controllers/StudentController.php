@@ -5,7 +5,9 @@
 namespace App\Http\Controllers;
 use App\Mail\SendEmail;
 use Illuminate\Support\Facades\Mail;
-use App\Models\Student; // <-- Make sure this line is here
+use App\Models\Student; 
+use App\Models\Grade;
+use App\Models\StudentType;
 use Illuminate\Http\Request;
 
 use App\Services\StudentService;
@@ -18,6 +20,7 @@ class StudentController extends Controller
     public function __construct(StudentService $StudentService)
     {
         $this->StudentService = $StudentService;
+       
     }
 
     // Create a new Student
@@ -69,11 +72,7 @@ class StudentController extends Controller
         // Send the registration email
         Mail::to($request->student_email)->send(new SendEmail($request));
 
-
-        
-      
-
-      //return redirect()->route('students.index')->with('success', 'Student submitted successfully.');
+      return redirect()->route('students.index')->with('success', 'Student submitted successfully.');
     }
 
     // Get all Students
@@ -87,7 +86,9 @@ class StudentController extends Controller
 
     public function create()
     {
-        return view('Student.create'); // Return the create form view
+        $Grades = Grade::all();
+        $StudentTypes = StudentType::all();
+        return view('Student.create', compact('Grades', 'StudentTypes'));
     }
 
     // Get a single Student by ID

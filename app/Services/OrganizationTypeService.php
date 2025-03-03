@@ -34,7 +34,7 @@ class OrganizationTypeService
         try {
             $OrganizationType = OrganizationType::findOrFail($id);
             $OrganizationType->delete();  // Soft delete or use forceDelete() for permanent delete
-            return redirect()->route('OrganizationType.index')->with('success', 'OrganizationType deleted successfully.');
+            return redirect()->route('OrganizationTypes.index')->with('success', 'OrganizationType deleted successfully.');
         } catch (\Exception $e) {
             dd($e->getMessage());
             // Log the exception or return the error message

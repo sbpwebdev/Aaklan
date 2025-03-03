@@ -33,7 +33,9 @@ Route::resource('organizations', OrganizationController::class);
 
 Route::resource('students', StudentController::class);
 
+Route::get('/staffs/gridlist', [StaffController::class, 'gridlist'])->name('/staffs/gridlist');
 Route::resource('staffs', StaffController::class);
+
 
 Route::resource('grades', GradeController::class);
 Route::resource('OrganizationTypes', OrganizationTypeController::class);

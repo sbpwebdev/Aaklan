@@ -58,7 +58,7 @@ class OrganizationController extends Controller
             // Return a success message with the path
            // return back()->with('success', 'Image uploaded successfully!')->with('path', 'images/' . $fileName);
         }
-        $student = Organization::create([
+        $organization = Organization::create([
             'organization_name' => $request->organization_name,
             'organization_email' => $request->organization_email,
             'organization_contact' => $request->organization_contact,
@@ -99,7 +99,7 @@ class OrganizationController extends Controller
     public function show($id)
     {
         $organization = $this->organizationService->getById($id);
-        return response()->json($organization);
+        return view('Organization.details',compact('organization'));
     }
     // Show the form to edit an organization
     public function edit(int $organizationId)

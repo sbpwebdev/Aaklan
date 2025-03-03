@@ -1,99 +1,31 @@
 @include('header')
 
-        <!-- Start Page title and tab -->
-        <div class="section-body">
+<div class="section-body">
             <div class="container-fluid">
                 <div class="d-flex justify-content-between align-items-center ">
                     <div class="header-action">
-                        <h1 class="page-title">StudentType</h1>
+                        <h1 class="page-title">Staff</h1>
                         <ol class="breadcrumb page-breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Aaklan</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">StudentType</li>
+                            <li class="breadcrumb-item"><a href="#">Ericsson</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Staff</li>
                         </ol>
                     </div>
                     <ul class="nav nav-tabs page-header-tab">
-                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="{{ route('StudentTypes.index')  }}">List View</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#StudentType-profile">Profile</a></li> -->
-                        <li class="nav-item"><a class="nav-link" href="{{ route('StudentTypes.create')  }}">Add</a></li>
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Staff-all">List View</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Staff-grid">Grid View</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Staff-profile">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Staff-add">Add</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="section-body mt-4">
-            <div class="container-fluid">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="StudentType-all">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-2 col-md-4 col-sm-6">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Roll No.">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-4 col-sm-6">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Department">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-4 col-sm-6">
-                                        <div class="input-group">
-                                            <input data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Admission Date">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-4 col-sm-6">
-                                        <a href="javascript:void(0);" class="btn btn-sm btn-primary btn-block" title="">Search</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="table-responsive card">
-                            <table class="table table-hover table-vcenter table-striped mb-0 text-nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                                                                
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                 
-                                @foreach ($StudentTypes as $StudentType)
-                                    <tr>
-                                        <td>{{ $StudentType->StudentType_name }}</td>
-                                     
-                                        <td>
-                                           
-                                            <a href="{{ route('StudentTypes.edit',$StudentType->StudentType_id)  }}" >
-                                            <button type="button" class="btn btn-icon btn-sm" title="Edit">
-                                            
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                            </a>
-                                            <form action="{{ route('StudentTypes.destroy', $StudentType->StudentType_id) }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-icon btn-sm js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>
-                                              
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="StudentType-profile">
+        <div class="tab-pane" id="Staff-profile">
                         <div class="row">
                             <div class="col-xl-4 col-md-12">
                                 <div class="card">
                                     <div class="card-body w_user">
                                         <div class="user_avtar">
-                                            <img class="rounded-circle" src="/images/sm/avatar2.jpg" alt="">
+                                            <img class="rounded-circle" src="../assets/images/sm/avatar1.jpg" alt="">
                                         </div>
                                         <div class="wid-u-info">
                                             <h5>Dessie Parks</h5>
@@ -124,49 +56,49 @@
                                         </div>
                                     </div>
 									<div class="card-body">
-										<p>Hello I am Celena Anderson a Clerk in Xyz College USA. I love to work with all my college StudentType and seniour professors.</p>
+										<p>Hello I am Celena Anderson a Clerk in Xyz College USA. I love to work with all my college staff and seniour professors.</p>
 										<ul class="list-group">
-                                            <li class="list-group-item">
-                                                <b>Gender </b>
-                                                <div class="pull-right">Female</div>
+											<li class="list-group-item">
+												<b>Gender </b>
+												<div>Female</div>
+											</li>
+											<li class="list-group-item">
+												<b>Operation Done </b>
+												<div>30+</div>
+											</li>
+											<li class="list-group-item">
+												<b>Degree </b>
+												<div>M.Com.</div>
                                             </li>
                                             <li class="list-group-item">
-                                                <b>Department</b>
-                                                <div class="pull-right">Mechanical</div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <b>Email </b>
-                                                <div class="pull-right">test@example.com</div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <b>Phone</b>
-                                                <div class="pull-right">1234567890</div>
-                                            </li>
+												<b>Designation</b>
+												<div>Jr. Clerk</div>
+											</li>
                                             <li class="list-group-item">
                                                 <div class="clearfix">
-                                                    <div class="float-left"><strong>Study</strong></div>
+                                                    <div class="float-left"><strong>Telly</strong></div>
                                                     <div class="float-right"><small class="text-muted">35%</small></div>
                                                 </div>
                                                 <div class="progress progress-xxs">
-                                                    <div class="progress-bar bg-pink" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-azure" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </li>
                                             <li class="list-group-item">
                                                 <div class="clearfix">
-                                                    <div class="float-left"><strong>Cricket</strong></div>
+                                                    <div class="float-left"><strong>Account</strong></div>
                                                     <div class="float-right"><small class="text-muted">72%</small></div>
                                                 </div>
                                                 <div class="progress progress-xxs">
-                                                    <div class="progress-bar bg-blue" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-red" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </li>
                                             <li class="list-group-item">
                                                 <div class="clearfix">
-                                                    <div class="float-left"><strong>Music</strong></div>
+                                                    <div class="float-left"><strong>MS Office</strong></div>
                                                     <div class="float-right"><small class="text-muted">60%</small></div>
                                                 </div>
                                                 <div class="progress progress-xxs">
-                                                    <div class="progress-bar bg-green" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-blue" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </li>
                                         </ul>
@@ -220,7 +152,7 @@
                                             <p>Please try <b>paste some texts</b> here</p>
                                         </div>
                                         <div class="timeline_item ">
-                                            <img class="tl_avatar" src="/images/xs/avatar1.jpg" alt="" />
+                                            <img class="tl_avatar" src="../assets/images/xs/avatar1.jpg" alt="" />
                                             <span><a href="javascript:void(0);">Elisse Joson</a> San Francisco, CA <small class="float-right text-right">20-April-2024 - Today</small></span>
                                             <h6 class="font600">Hello, 'Im a single div responsive timeline without media Queries!</h6>
                                             <div class="msg">
@@ -237,7 +169,7 @@
                                                     <ul class="recent_comments list-unstyled mt-4 mb-0">
                                                         <li>
                                                             <div class="avatar_img">
-                                                                <img class="rounded img-fluid" src="/images/xs/avatar4.jpg" alt="">
+                                                                <img class="rounded img-fluid" src="../assets/images/xs/avatar4.jpg" alt="">
                                                             </div>
                                                             <div class="comment_body">
                                                                 <h6>Donald Gardner <small class="float-right font-14">Just now</small></h6>
@@ -249,14 +181,14 @@
                                             </div>                                
                                         </div>
                                         <div class="timeline_item ">
-                                            <img class="tl_avatar" src="/images/xs/avatar4.jpg" alt="" />
+                                            <img class="tl_avatar" src="../assets/images/xs/avatar4.jpg" alt="" />
                                             <span><a href="javascript:void(0);" title="">Dessie Parks</a> Oakland, CA <small class="float-right text-right">19-April-2024 - Yesterday</small></span>
                                             <h6 class="font600">Oeehhh, that's awesome.. Me too!</h6>
                                             <div class="msg">
                                                 <p>I'm speaking with myself, number one, because I have a very good brain and I've said a lot of things. on the web by far... While that's mock-ups and this is politics, are they really so different? I think the only card she has is the Lorem card.</p>
                                                 <div class="timeline_img mb-20">
-                                                    <img class="width100" src="/images/gallery/1.jpg" alt="Awesome Image">
-                                                    <img class="width100" src="/images/gallery/2.jpg" alt="Awesome Image">
+                                                    <img class="width100" src="../assets/images/gallery/1.jpg" alt="Awesome Image">
+                                                    <img class="width100" src="../assets/images/gallery/2.jpg" alt="Awesome Image">
                                                 </div>
                                                 <a href="javascript:void(0);" class="mr-20 text-muted"><i class="fa fa-heart text-pink"></i> 23 Love</a>
                                                 <a class="text-muted" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1"><i class="fa fa-comments"></i> 2 Comment</a>
@@ -270,20 +202,20 @@
                                                     <ul class="recent_comments list-unstyled mt-4 mb-0">
                                                         <li>
                                                             <div class="avatar_img">
-                                                                <img class="rounded img-fluid" src="/images/xs/avatar4.jpg" alt="">
+                                                                <img class="rounded img-fluid" src="../assets/images/xs/avatar4.jpg" alt="">
                                                             </div>
                                                             <div class="comment_body">
                                                                 <h6>Donald Gardner <small class="float-right font-14">Just now</small></h6>
                                                                 <p>Lorem ipsum Veniam aliquip culpa laboris minim tempor</p>
                                                                 <div class="timeline_img mb-20">
-                                                                    <img class="width150" src="/images/gallery/7.jpg" alt="Awesome Image">
-                                                                    <img class="width150" src="/images/gallery/8.jpg" alt="Awesome Image">
+                                                                    <img class="width150" src="../assets/images/gallery/7.jpg" alt="Awesome Image">
+                                                                    <img class="width150" src="../assets/images/gallery/8.jpg" alt="Awesome Image">
                                                                 </div>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="avatar_img">
-                                                                <img class="rounded img-fluid" src="/images/xs/avatar3.jpg" alt="">
+                                                                <img class="rounded img-fluid" src="../assets/images/xs/avatar3.jpg" alt="">
                                                             </div>
                                                             <div class="comment_body">
                                                                 <h6>Dessie Parks <small class="float-right font-14">1min ago</small></h6>
@@ -295,7 +227,7 @@
                                             </div>
                                         </div>
                                         <div class="timeline_item ">
-                                            <img class="tl_avatar" src="/images/xs/avatar7.jpg" alt="" />
+                                            <img class="tl_avatar" src="../assets/images/xs/avatar7.jpg" alt="" />
                                             <span><a href="javascript:void(0);" title="" >Rochelle Barton</a> San Francisco, CA <small class="float-right text-right">12-April-2024</small></span>
                                             <h6 class="font600">An Engineer Explains Why You Should Always Order the Larger Pizza</h6>
                                             <div class="msg">
@@ -317,58 +249,4 @@
                             </div>
                         </div>
                     </div>
-                 
-                </div>
-            </div>
-        </div>
-        <!-- Start main footer -->
-       
-    </div>    
-  
-
-    <!-- Add New Event popup -->
-<div class="modal fade" id="successModal" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title"><strong>Add</strong> </h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body">
-                 <p id="successMessage"></p>
-            </div>
-            <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-success save-event" data-dismiss="modal">Save</button> -->
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-//$(document).ready(function(){
-    //@if(session('success'))
-            var successMessage = "{{ session('success') }}";
-            alert(successMessage);
-            // Set the success message inside the modal body
-            $('#successMessage').text(successMessage);
-            // Show the modal
-            $('#successModal').modal();
-       // @endif
-//});
-</script>
-@include('footer')
-<!-- <script type="text/javascript">
-    $(document).ready(function() {
-        alert("hi...");
-        @if(session('success'))
-            var successMessage = "{{ session('success') }}";
-            alert(successMessage);
-            // Set the success message inside the modal body
-            $('#successMessage').text(successMessage);
-            // Show the modal
-            $('#successModal').modal('show');
-        @endif
-    });
-</script> -->
-
-
+                    @include('footer')
